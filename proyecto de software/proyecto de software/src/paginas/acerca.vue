@@ -3,7 +3,9 @@
     <!-- NAVBAR -->
     <header class="navbar">
       <button @click="toggleMenu" class="menu-btn">☰</button>
-      <h1 class="logo">iEssence</h1>
+      <router-link to="/" class="logo-link">
+        <h1 class="logo">iEssence</h1>
+      </router-link>
       <div class="user-actions">
         <router-link to="/login" class="btn-link">Login</router-link>
         <router-link to="/register" class="btn-link">Registrarse</router-link>
@@ -242,7 +244,13 @@ const toggleMenu = () => {
   margin-right: 0.5rem;
 }
 
-/* Responsive */
+/* click boton */
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* imagen */
 @media (max-width: 768px) {
   .about-content {
     flex-direction: column;

@@ -6,6 +6,7 @@
         <input type="email" v-model="email" placeholder="Dirección de correo" required />
         <input type="password" v-model="password" placeholder="Crear contraseña" required />
         <input type="password" v-model="confirmPassword" placeholder="Repite contraseña" required />
+        <router-link to="/login" class="btn-link">Login</router-link>
 
         <div class="social-buttons">
           <button type="button" class="btn-social facebook">Facebook</button>
@@ -16,6 +17,10 @@
         <button type="submit" class="btn-main">Continuar</button>
       </form>
     </div>
+    <!-- logo -->
+    <router-link to="/" class="logo-link">
+      <h1 class="logo">iEssence</h1>
+    </router-link>
   </div>
 </template>
 
@@ -136,5 +141,19 @@ input::placeholder {
 
 .btn-main:hover {
   background: #369ad6;
+}
+
+.logo-link {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo {
+  margin: 0;
 }
 </style>

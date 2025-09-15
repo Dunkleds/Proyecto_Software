@@ -10,23 +10,28 @@
         <button type="button" class="btn-social facebook">Sign up with Facebook</button>
         <button type="button" class="btn-social google">Sign up with Google</button>
         <button type="button" class="btn-social apple">Sign up with Apple</button>
+        <router-link to="/register" class="btn-link">Registrarse</router-link>
 
         <button type="submit" class="btn-main">Continuar</button>
       </form>
     </div>
+    <!-- logo -->
+    <router-link to="/" class="logo-link">
+      <h1 class="logo">iEssence</h1>
+    </router-link>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const email = ref("");
-const password = ref("");
+const email = ref('')
+const password = ref('')
 
 const login = () => {
-  console.log("Login con:", email.value, password.value);
+  console.log('Login con:', email.value, password.value)
   // Aquí conectas al backend o proveedor de auth
-};
+}
 </script>
 
 <style scoped>
@@ -73,7 +78,30 @@ input {
   border: none;
   cursor: pointer;
 }
-.facebook { background: #3b5998; color: white; }
-.google { background: #db4437; color: white; }
-.apple { background: #000; color: white; }
+.facebook {
+  background: #3b5998;
+  color: white;
+}
+.google {
+  background: #db4437;
+  color: white;
+}
+.apple {
+  background: #000;
+  color: white;
+}
+
+.logo-link {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo {
+  margin: 0;
+}
 </style>

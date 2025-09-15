@@ -3,7 +3,12 @@
     <!-- NAVBAR -->
     <header class="navbar">
       <button @click="toggleMenu" class="menu-btn">☰</button>
-      <h1 class="logo">iEssence</h1>
+
+      <!-- logo -->
+      <router-link to="/" class="logo-link">
+        <h1 class="logo">iEssence</h1>
+      </router-link>
+
       <div class="user-actions">
         <!-- Cambié los botones por router-link -->
         <router-link to="/login" class="btn-link">Login</router-link>
@@ -136,6 +141,12 @@ const productos = ref([
 
 .sidebar a:hover {
   text-decoration: underline;
+}
+
+/* click boton */
+.logo-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Catálogo */

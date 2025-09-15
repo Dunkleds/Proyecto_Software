@@ -50,21 +50,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed } from 'vue'
 
 const carrito = ref([
-  { id: 1, nombre: "Audífonos Pro", precio: 129990, cantidad: 1, imagen: "audifonos1.png" },
-  { id: 2, nombre: "Cable USB-C", precio: 19990, cantidad: 2, imagen: "cable.png" },
-]);
+  { id: 1, nombre: 'Audífonos Pro', precio: 129990, cantidad: 1, imagen: 'audifonos1.png' },
+  { id: 2, nombre: 'Cable USB-C', precio: 19990, cantidad: 2, imagen: 'cable.png' },
+])
 
 // Calcular total dinámicamente
 const total = computed(() =>
   carrito.value.reduce((acc, item) => acc + item.precio * item.cantidad, 0)
-);
+)
 
 const toggleMenu = () => {
-  console.log("Sidebar aquí si la agregas");
-};
+  console.log('Sidebar aquí si la agregas')
+}
 </script>
 
 <style scoped>
