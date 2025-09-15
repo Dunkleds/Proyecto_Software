@@ -6,7 +6,8 @@ import Inventario from '../paginas/inventario.vue'
 import Reportes from '../paginas/Reportes.vue'
 import Login from '../paginas/login.vue'
 import Register from '../paginas/register.vue'
-
+import carrito from '@/paginas/carrito.vue'
+import acerca from '@/paginas/acerca.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -15,6 +16,8 @@ const router = createRouter({
     { path: '/reportes', name: 'reportes', component: Reportes },
     { path: '/login', name: 'login', component: Login },
     { path: '/register', name: 'register', component: Register },
+    { path: '/carrito', name: 'carrito', component: carrito },
+    { path: '/acerca', name: 'acerca', component: acerca },
   ],
 })
 

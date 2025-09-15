@@ -5,24 +5,29 @@
       <button @click="toggleMenu" class="menu-btn">☰</button>
       <h1 class="logo">iEssence</h1>
       <div class="user-actions">
-        <button class="login-btn">Login</button>
-        <button class="register-btn">Registrarse</button>
+        <!-- Cambié los botones por router-link -->
+        <router-link to="/login" class="btn-link">Login</router-link>
+        <router-link to="/register" class="btn-link">Registrarse</router-link>
         <span class="user-icon">👤</span>
       </div>
     </header>
 
     <!-- SIDEBAR -->
     <aside v-if="menuOpen" class="sidebar">
+      <div class="sidebar-header">
+        <button @click="toggleMenu" class="close-btn">✖</button>
+      </div>
       <ul>
-        <li><button>Catálogo</button></li>
-        <li><button>Carro 🛒</button></li>
+        <li><router-link to="/">Catálogo</router-link></li>
+        <li><router-link to="/carrito">Carro 🛒</router-link></li>
+        <li><router-link to="/acerca">Acerca de nosotros</router-link></li>
       </ul>
     </aside>
 
     <!-- CATÁLOGO DE PRODUCTOS -->
     <main class="catalogo">
       <div v-for="(producto, index) in productos" :key="index" class="producto-card">
-        <img :src="producto.imagen" :alt="producto.nombre" />
+        <img :src="`/src/assets/${producto.imagen}`" :alt="producto.nombre" />
         <h3>{{ producto.nombre }}</h3>
         <p>{{ producto.marca }}</p>
         <p class="precio">$ {{ producto.precio }}</p>
@@ -33,21 +38,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const menuOpen = ref(false);
+const menuOpen = ref(false)
 const toggleMenu = () => {
-  menuOpen.value = !menuOpen.value;
-};
+  menuOpen.value = !menuOpen.value
+}
 
 const productos = ref([
-  { nombre: "Audífonos Pro", marca: "Marca X", precio: 129990, imagen: "audifonos1.png" },
-  { nombre: "Audífonos Air", marca: "Marca Y", precio: 159990, imagen: "audifonos2.png" },
-  { nombre: "Headset Gamer", marca: "Marca Z", precio: 99990, imagen: "headset.png" },
-  { nombre: "Cargador Rápido", marca: "Marca A", precio: 29990, imagen: "cargador.png" },
-  { nombre: "Cable USB-C", marca: "Marca B", precio: 19990, imagen: "cable.png" },
-  { nombre: "PowerBank", marca: "Marca C", precio: 49990, imagen: "powerbank.png" }
-]);
+  { nombre: 'Audífonos Pro', marca: 'Marca X', precio: 129990, imagen: 'audifonos1.png' },
+  { nombre: 'Audífonos Air', marca: 'Marca Y', precio: 159990, imagen: 'audifonos2.png' },
+  { nombre: 'Headset Gamer', marca: 'Marca Z', precio: 99990, imagen: 'headset.png' },
+  { nombre: 'Cargador Rápido', marca: 'Marca A', precio: 29990, imagen: 'cargador.png' },
+  { nombre: 'Cable USB-C', marca: 'Marca B', precio: 19990, imagen: 'cable.png' },
+  { nombre: 'PowerBank', marca: 'Marca C', precio: 49990, imagen: 'powerbank.png' },
+])
 </script>
 
 <style scoped>
@@ -80,14 +85,24 @@ const productos = ref([
   font-size: 1.5rem;
 }
 
-.user-actions button {
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-link {
   margin: 0 0.5rem;
-  background: none;
+  text-decoration: none;
   border: 1px solid white;
   color: white;
   padding: 0.3rem 0.7rem;
-  cursor: pointer;
   border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.btn-link:hover {
+  background: white;
+  color: #243447;
 }
 
 .user-icon {
@@ -112,6 +127,15 @@ const productos = ref([
 
 .sidebar li {
   margin: 1rem 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
 }
 
 /* Catálogo */

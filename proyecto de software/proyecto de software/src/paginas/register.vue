@@ -6,9 +6,13 @@
         <input type="email" v-model="email" placeholder="Dirección de correo" required />
         <input type="password" v-model="password" placeholder="Crear contraseña" required />
         <input type="password" v-model="confirmPassword" placeholder="Repite contraseña" required />
-        <button type="button" class="btn-social facebook">Sign up with Facebook</button>
-        <button type="button" class="btn-social google">Sign up with Google</button>
-        <button type="button" class="btn-social apple">Sign up with Apple</button>
+
+        <div class="social-buttons">
+          <button type="button" class="btn-social facebook">Facebook</button>
+          <button type="button" class="btn-social google">Google</button>
+          <button type="button" class="btn-social apple">Apple</button>
+        </div>
+
         <button type="submit" class="btn-main">Continuar</button>
       </form>
     </div>
@@ -31,4 +35,106 @@ const register = () => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Contenedor principal centrado */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #1f1f2e;
+  color: white;
+}
+
+/* Caja del formulario */
+.auth-box {
+  background: #2c2c3e;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Título */
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Inputs */
+input {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.7rem 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #3a3a4d;
+  color: white;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: #b0b0c3;
+}
+
+/* Botones sociales */
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.btn-social {
+  flex: 1;
+  margin: 0 0.3rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.btn-social:hover {
+  transform: scale(1.05);
+}
+
+.facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.google {
+  background: #db4437;
+  color: white;
+}
+
+.apple {
+  background: #000;
+  color: white;
+}
+
+/* Botón principal */
+.btn-main {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background: #4cafef;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s ease;
+}
+
+.btn-main:hover {
+  background: #369ad6;
+}
+</style>
