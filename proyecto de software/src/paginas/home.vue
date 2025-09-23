@@ -62,7 +62,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* Mantengo tus estilos originales */
 .home {
   font-family: Arial, sans-serif;
   color: #fff;
