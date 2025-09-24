@@ -42,18 +42,17 @@
 import { ref, onMounted } from "vue";
 
 const menuOpen = ref(false);
-const toggleMenu = () => {
-  menuOpen.value = !menuOpen.value;
-};
+const toggleMenu = () => { menuOpen.value = !menuOpen.value; };
 
 const productos = ref<any[]>([]);
 
+// Usa VITE_API_URL en prod (Netlify) y localhost:3000 en dev si no está definida
+const API_BASE = (import.meta.env.VITE_API_URL as string) || "http://localhost:3000";
+
 onMounted(async () => {
   try {
-    const res = await fetch("http://localhost:3000/productos");
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
+    const res = await fetch(`${API_BASE}/productos`);
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     productos.value = await res.json();
   } catch (error) {
     console.error("Error al obtener los productos:", error);
@@ -62,10 +61,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-<<<<<<< HEAD:proyecto de software/proyecto de software/src/paginas/home.vue
-/* Mantengo tus estilos originales */
-=======
->>>>>>> 34a5a296417f794d36fa78b71a00adaea074f2a7:proyecto de software/src/paginas/home.vue
+/* Mantengo tus estilos */
 .home {
   font-family: Arial, sans-serif;
   color: #fff;
