@@ -62,6 +62,10 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+<<<<<<< HEAD:proyecto de software/proyecto de software/src/paginas/home.vue
+/* Mantengo tus estilos originales */
+=======
+>>>>>>> 34a5a296417f794d36fa78b71a00adaea074f2a7:proyecto de software/src/paginas/home.vue
 .home {
   font-family: Arial, sans-serif;
   color: #fff;

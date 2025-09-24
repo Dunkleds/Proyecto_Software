@@ -25,18 +25,59 @@
 </template>
 
 <script setup lang="ts">
+/* ----------------------------
+   ✅ Imports
+----------------------------- */
 import { ref } from 'vue'
+import axios from 'axios'
 
+/* ----------------------------
+   ✅ Axios con baseURL desde Vite
+   - En dev:  VITE_API_URL=http://127.0.0.1:8000
+   - En prod: VITE_API_URL=https://planb-production.up.railway.app
+----------------------------- */
+const API_BASE = (import.meta.env.VITE_API_URL as string) || ''
+if (!API_BASE) {
+  console.warn('VITE_API_URL no está definida. Configúrala para que el registro funcione.')
+}
+const api = axios.create({ baseURL: API_BASE })
+
+/* ----------------------------
+   ✅ Variables reactivas
+----------------------------- */
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 
-const register = () => {
+/* ----------------------------
+   ✅ Lógica de registro (conexión backend Django)
+----------------------------- */
+const register = async () => {
   if (password.value !== confirmPassword.value) {
     alert('Las contraseñas no coinciden')
     return
   }
-  console.log('Registro con:', email.value)
+
+  try {
+    // OJO: usar slash final en /api/register/
+    const { data } = await api.post('/api/register/', {
+      email: email.value,
+      password: password.value
+    })
+
+    alert(data?.message ?? 'Usuario creado con éxito')
+    email.value = ''
+    password.value = ''
+    confirmPassword.value = ''
+  } catch (error: unknown) {
+    const err = error as any
+    const msg =
+      err?.response?.data?.error ||
+      err?.response?.data?.detail ||
+      err?.message ||
+      'Error en el registro'
+    alert(String(msg))
+  }
 }
 </script>
 
